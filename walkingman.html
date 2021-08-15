@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+  background-color: #999;
+}
+#strip {
+  display: inline-block;
+  position: absolute;
+  left: calc(50% - 255px);
+  top: calc(50% - 75px);
+  height: 150px;
+  width: 510px;
+  overflow-x: hidden;
+  border: 1px solid #666;
+  border-radius: 10px;
+  background: -moz-linear-gradient(bottom, #000 2%, #333 10%, #aaa 12%);
+}
+#char {
+  display: inline-block;
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  margin-left: -100px;
+  bottom: 0;
+  animation: char 18s linear infinite;
+  -webkit-animation: char 20s linear infinite;
+}
+.head {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #da8;
+  border-radius: 5px 20px 10px 5px;
+  left: 50%;
+  margin-left: -12px;
+  top: 5px;
+  border: 1px solid #369;
+}
+.arm {
+  position: absolute;
+  width: 12px;
+  height: 35px;
+  background-color: #369;
+  left: 50%;
+  top: 25px;
+}
+.arm.back {
+  border-radius: 0 10px 10px 10px;
+  margin-left: 2px;
+  transform: rotate(-30deg);
+  transform-origin: 59% 0%;
+  animation: armback 1s linear infinite;
+  -webkit-transform: rotate(-30deg);
+  -webkit-transform-origin: 59% 0%;
+  -webkit-animation: armback 1s linear infinite;
+}
+.arm.front {
+  border-radius: 10px 0 10px 10px;
+  margin-left: -22px;
+  transform: rotate(30deg);
+  transform-origin: 59% 0%;
+  animation: armfront 1s linear infinite;
+  -webkit-transform: rotate(30deg);
+  -webkit-transform-origin: 59% 0%;
+  -webkit-animation: armfront 1s linear infinite;
+}
+.body {
+  position: absolute;
+  width: 30px;
+  height: 40px;
+  background-color: #369;
+  left: 50%;
+  top: 25px;
+  border-radius: 5px;
+  margin-left: -19px;
+  z-index: 1;
+  animation: body 1s linear infinite;
+  -webkit-animation: body 1s linear infinite;
+}
+.leg {
+  position: absolute;
+  width: 12px;
+  height: 40px;
+  background-color: #369;
+  left: 50%;
+  top: 55px;
+}
+.leg.front {
+  margin-left: -12px;
+  border-radius: 0 0 0 10px;
+  transform: rotate(30deg);
+  transform-origin: 59% 0;
+  animation: legfront 1s linear infinite;
+  -webkit-transform: rotate(30deg);
+  -webkit-transform-origin: 59% 0;
+  -webkit-animation: legfront 1s linear infinite;
+}
+.leg.back {
+  margin-left: -7px;
+  border-radius: 0 0 0 10px;
+  transform: rotate(-30deg);
+  transform-origin: 59% 0;
+  animation: legback 1s linear infinite;
+  -webkit-transform: rotate(-30deg);
+  -webkit-transform-origin: 59% 0;
+  -webkit-animation: legback 1s linear infinite;
+}
+#char:hover .arm, #char:hover .body, #char:hover .leg {
+  background-color: #900;
+}
+@keyframes body  {
+  0% { width: 30px; margin-left: -19px; }
+  50% { width: 20px; margin-left: -14px; }
+  100% { width: 30px; margin-left: -19px; }
+}
+@keyframes legfront {
+  0% { transform: rotate(30deg); margin-left: -12px; }
+  50% { transform: scaleY(0.6); }
+  100% { transform: rotate(-30deg); margin-left: -7px; }
+}
+@keyframes legback {
+  0% { margin-left: -7px; transform: rotate(-30deg); }
+  100% { margin-left: -12px; transform: rotate(30deg); }
+}
+@keyframes armfront {
+  0% { margin-left: -22px; transform: rotate(30deg); border-radius: 10px 0 0 0; }
+  50% { transform: scaleY(0.8); }
+  100% { margin-left: 2px; transform: rotate(-30deg); border-radius: 0 10px 0 0; }
+}
+@keyframes armback {
+  0% { margin-left: 2px; transform: rotate(-30deg); border-radius: 0 10px 0 0; }
+  50% { transform: scaleY(0.8); }
+  100% { margin-left: -22px; transform: rotate(30deg); border-radius: 10px 0 0 0; }
+}
+@keyframes char {
+  100% { transform: translateX(600px); }
+}
+
+@-webkit-keyframes body  {
+  0% { width: 30px; margin-left: -19px; }
+  50% { width: 20px; margin-left: -14px; }
+  100% { width: 30px; margin-left: -19px; }
+}
+@-webkit-keyframes legfront {
+  0% { -webkit-transform: rotate(30deg); margin-left: -12px; }
+  50% { -webkit-transform: scaleY(0.8); }
+  100% { -webkit-transform: rotate(-30deg); margin-left: -7px; }
+}
+@-webkit-keyframes legback {
+  0% { -webkit-transform: rotate(-30deg); margin-left: -7px; }
+  100% { -webkit-transform: rotate(30deg); margin-left: -12px; }
+}
+@-webkit-keyframes armfront {
+  0% { -webkit-transform: rotate(30deg); margin-left: -22px; border-radius: 10px 0 0 0; }
+  100% { -webkit-transform: rotate(-30deg); margin-left: 2px; border-radius: 0 10px 0 0; }
+}
+@-webkit-keyframes armback {
+  0% { -webkit-transform: rotate(-30deg); margin-left: 2px; border-radius: 0 10px 0 0; }
+  100% { -webkit-transform: rotate(30deg);  margin-left: -22px; border-radius: 10px 0 0 0; }
+}
+@-webkit-keyframes char {
+  100% { -webkit-transform: translateX(600px); }
+}body {
+  background-color: #999;
+}
+#strip {
+  display: inline-block;
+  position: absolute;
+  left: calc(50% - 255px);
+  top: calc(50% - 75px);
+  height: 150px;
+  width: 510px;
+  overflow-x: hidden;
+  border: 1px solid #666;
+  border-radius: 10px;
+  background: -moz-linear-gradient(bottom, #000 2%, #333 10%, #aaa 12%);
+}
+#char {
+  display: inline-block;
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  margin-left: -100px;
+  bottom: 0;
+  animation: char 18s linear infinite;
+  -webkit-animation: char 20s linear infinite;
+}
+.head {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #da8;
+  border-radius: 5px 20px 10px 5px;
+  left: 50%;
+  margin-left: -12px;
+  top: 5px;
+  border: 1px solid #369;
+}
+.arm {
+  position: absolute;
+  width: 12px;
+  height: 35px;
+  background-color: #369;
+  left: 50%;
+  top: 25px;
+}
+.arm.back {
+  border-radius: 0 10px 10px 10px;
+  margin-left: 2px;
+  transform: rotate(-30deg);
+  transform-origin: 59% 0%;
+  animation: armback 1s linear infinite;
+  -webkit-transform: rotate(-30deg);
+  -webkit-transform-origin: 59% 0%;
+  -webkit-animation: armback 1s linear infinite;
+}
+.arm.front {
+  border-radius: 10px 0 10px 10px;
+  margin-left: -22px;
+  transform: rotate(30deg);
+  transform-origin: 59% 0%;
+  animation: armfront 1s linear infinite;
+  -webkit-transform: rotate(30deg);
+  -webkit-transform-origin: 59% 0%;
+  -webkit-animation: armfront 1s linear infinite;
+}
+.body {
+  position: absolute;
+  width: 30px;
+  height: 40px;
+  background-color: #369;
+  left: 50%;
+  top: 25px;
+  border-radius: 5px;
+  margin-left: -19px;
+  z-index: 1;
+  animation: body 1s linear infinite;
+  -webkit-animation: body 1s linear infinite;
+}
+.leg {
+  position: absolute;
+  width: 12px;
+  height: 40px;
+  background-color: #369;
+  left: 50%;
+  top: 55px;
+}
+.leg.front {
+  margin-left: -12px;
+  border-radius: 0 0 0 10px;
+  transform: rotate(30deg);
+  transform-origin: 59% 0;
+  animation: legfront 1s linear infinite;
+  -webkit-transform: rotate(30deg);
+  -webkit-transform-origin: 59% 0;
+  -webkit-animation: legfront 1s linear infinite;
+}
+.leg.back {
+  margin-left: -7px;
+  border-radius: 0 0 0 10px;
+  transform: rotate(-30deg);
+  transform-origin: 59% 0;
+  animation: legback 1s linear infinite;
+  -webkit-transform: rotate(-30deg);
+  -webkit-transform-origin: 59% 0;
+  -webkit-animation: legback 1s linear infinite;
+}
+#char:hover .arm, #char:hover .body, #char:hover .leg {
+  background-color: #900;
+}
+@keyframes body  {
+  0% { width: 30px; margin-left: -19px; }
+  50% { width: 20px; margin-left: -14px; }
+  100% { width: 30px; margin-left: -19px; }
+}
+@keyframes legfront {
+  0% { transform: rotate(30deg); margin-left: -12px; }
+  50% { transform: scaleY(0.6); }
+  100% { transform: rotate(-30deg); margin-left: -7px; }
+}
+@keyframes legback {
+  0% { margin-left: -7px; transform: rotate(-30deg); }
+  100% { margin-left: -12px; transform: rotate(30deg); }
+}
+@keyframes armfront {
+  0% { margin-left: -22px; transform: rotate(30deg); border-radius: 10px 0 0 0; }
+  50% { transform: scaleY(0.8); }
+  100% { margin-left: 2px; transform: rotate(-30deg); border-radius: 0 10px 0 0; }
+}
+@keyframes armback {
+  0% { margin-left: 2px; transform: rotate(-30deg); border-radius: 0 10px 0 0; }
+  50% { transform: scaleY(0.8); }
+  100% { margin-left: -22px; transform: rotate(30deg); border-radius: 10px 0 0 0; }
+}
+@keyframes char {
+  100% { transform: translateX(600px); }
+}
+
+@-webkit-keyframes body  {
+  0% { width: 30px; margin-left: -19px; }
+  50% { width: 20px; margin-left: -14px; }
+  100% { width: 30px; margin-left: -19px; }
+}
+@-webkit-keyframes legfront {
+  0% { -webkit-transform: rotate(30deg); margin-left: -12px; }
+  50% { -webkit-transform: scaleY(0.8); }
+  100% { -webkit-transform: rotate(-30deg); margin-left: -7px; }
+}
+@-webkit-keyframes legback {
+  0% { -webkit-transform: rotate(-30deg); margin-left: -7px; }
+  100% { -webkit-transform: rotate(30deg); margin-left: -12px; }
+}
+@-webkit-keyframes armfront {
+  0% { -webkit-transform: rotate(30deg); margin-left: -22px; border-radius: 10px 0 0 0; }
+  100% { -webkit-transform: rotate(-30deg); margin-left: 2px; border-radius: 0 10px 0 0; }
+}
+@-webkit-keyframes armback {
+  0% { -webkit-transform: rotate(-30deg); margin-left: 2px; border-radius: 0 10px 0 0; }
+  100% { -webkit-transform: rotate(30deg);  margin-left: -22px; border-radius: 10px 0 0 0; }
+}
+@-webkit-keyframes char {
+  100% { -webkit-transform: translateX(600px); }
+}
+    </style>
+</head>
+<body>
+    <div id="strip">
+        <div id="char">
+          <span class="head"></span>
+          <span class="arm front"></span>
+          <span class="body"></span>
+          <span class="arm back"></span>
+          <span class="leg front"></span>
+          <span class="leg back"></span>
+        </div>
+      </div>
+</body>
+</html>
